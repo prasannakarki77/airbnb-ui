@@ -1,0 +1,44 @@
+.container {
+  position: relative;
+}
+#backdrop-area {
+  background-color: rgba(0, 0, 0, 0.145);
+  backdrop-filter: blur(3px);
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  animation-name: backdropTransition;
+  animation-duration: 0.3s;
+}
+
+@keyframes backdropTransition {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 100;
+  }
+}
+
+.search-bar {
+  width: 100vw;
+  background-color: rgb(255, 255, 255);
+  transition: all 0.3;
+  animation-name: fromTop;
+  animation-duration: 0.3s;
+}
+
+@keyframes fromTop {
+  0% {
+    height: 0px;
+    overflow: hidden;
+  }
+  50% {
+    height: 20px;
+  }
+  100% {
+    height: auto;
+  }
+}
