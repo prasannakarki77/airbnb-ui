@@ -1,15 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { MdSearch } from "react-icons/md";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { AiOutlineMinusCircle, AiOutlinePlusCircle } from "react-icons/ai";
 import "./searchbar.scss";
+import StaysContext from "../contexts/StaysContext";
 
 const SearchBar = ({ visible, onClose }) => {
+  const { filterStays } = useContext(StaysContext);
   const [locationOpen, setLocationOpen] = useState(true);
   const [guestOpen, setguestOpen] = useState(false);
   const [locationValue, setLocationValue] = useState("");
   const [adultCount, setAdultCount] = useState(0);
-  let [childrenCount, setChildrenCount] = useState(0);
+  const [childrenCount, setChildrenCount] = useState(0);
   const [totalGuests, setTotalGuests] = useState(0);
 
   const handleLocationOpen = () => {
@@ -34,6 +36,9 @@ const SearchBar = ({ visible, onClose }) => {
     let total = totalGuests - 1;
     setTotalGuests(total);
     return count;
+  };
+  const searchStays = () => {
+    filterStays(locationValue, totalGuests);
   };
 
   const handleClose = (e) => {
@@ -71,7 +76,7 @@ const SearchBar = ({ visible, onClose }) => {
           </div>
           <div className="button-field search-option">
             <div className="search-field ">
-              <button className="search-field__button">
+              <button className="search-field__button" onClick={searchStays}>
                 <MdSearch />
                 Search
               </button>
@@ -84,15 +89,15 @@ const SearchBar = ({ visible, onClose }) => {
           >
             <p
               className="reference__location"
-              onClick={() => setLocationValue("Turuku, Finland")}
-            >
-              <FaMapMarkerAlt /> Turuku, Finland
-            </p>
-            <p
-              className="reference__location"
               onClick={() => setLocationValue("Helsinki, Finland")}
             >
-              <FaMapMarkerAlt /> Turuku, Finland
+              <FaMapMarkerAlt /> Helsinki, Finland
+            </p>
+            <p
+              className="reference__location"
+              onClick={() => setLocationValue("Vaasa, Finland")}
+            >
+              <FaMapMarkerAlt /> Vaasa, Finland
             </p>
             <p
               className="reference__location"
@@ -102,9 +107,9 @@ const SearchBar = ({ visible, onClose }) => {
             </p>
             <p
               className="reference__location"
-              onClick={() => setLocationValue("Turuku, Finland")}
+              onClick={() => setLocationValue("Oulu, Finland")}
             >
-              <FaMapMarkerAlt /> Turuku, Finland
+              <FaMapMarkerAlt /> Oulu, Finland
             </p>
           </div>
           <div className={`reference  ${guestOpen ? "reference--open" : ""}`}>

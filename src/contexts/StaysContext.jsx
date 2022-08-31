@@ -1,8 +1,8 @@
-import { createContext, useContext } from "react";
+import { createContext, useContext, useState } from "react";
 
 const StaysContext = createContext();
 
-const staysList = [
+const stays = [
   {
     type: "Entire Apartment 2 beds",
     title: "Stylist apartment in center of the city",
@@ -28,7 +28,7 @@ const staysList = [
     superHost: true,
     image:
       "https://images.unsplash.com/photo-1523217582562-09d0def993a6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80",
-    location: "Helsinki, Finland",
+    location: "Turku, Finland",
   },
   {
     type: "Entire Apartment 2 beds",
@@ -37,7 +37,7 @@ const staysList = [
     superHost: false,
     image:
       "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
-    location: "Helsinki, Finland",
+    location: "Vaasa, Finland",
   },
   {
     type: "Private room",
@@ -46,7 +46,7 @@ const staysList = [
     superHost: false,
     image:
       "https://images.unsplash.com/photo-1486304873000-235643847519?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1032&q=80",
-    location: "Helsinki, Finland",
+    location: "Vaasa, Finland",
   },
   {
     type: "Entire house",
@@ -60,7 +60,28 @@ const staysList = [
 ];
 
 export const StaysProvider = ({ children }) => {
-  return <StaysContext.Provider value={staysList} >{children}</StaysContext.Provider>;
+  const [staysList, setStaysList] = useState(stays);
+  const [filteredList, setFilteredList] = useState([]);
+  const [staysLocation, setStayLocation] = useState("Helsinki, Finland");
+  const [staysCount, setStaysCount] = useState(0);
+  const filterStays = (address, guests) => {
+    const filteredList = stays.filter((stay) =>
+      stay.location.includes(address)
+    );
+
+    setStaysList(filteredList);
+    setStayLocation(address);
+  };
+  const value = {
+    staysList,
+    filterStays,
+    filteredList,
+    staysCount,
+    staysLocation,
+  };
+  return (
+    <StaysContext.Provider value={value}>{children}</StaysContext.Provider>
+  );
 };
 
 export default StaysContext;

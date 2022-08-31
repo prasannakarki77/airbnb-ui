@@ -1,20 +1,25 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./header.scss";
 import { RiCloudWindyFill } from "react-icons/ri";
 import { MdSearch } from "react-icons/md";
 import { useState } from "react";
 import SearchBar from "../searchBar/SearchBar";
+import StaysContext from "../contexts/StaysContext";
 const Header = () => {
   const [openSearchBar, setOpenSearchBar] = useState(false);
+  const { staysLocation } = useContext(StaysContext);
+  function refreshPage() {
+    window.location.reload(false);
+  }
   const handleOnClose = () => setOpenSearchBar(false);
   return (
     <>
-      <div className="header-container" onClick={() => setOpenSearchBar(true)}>
-        <div className="logo">
+      <div className="header-container">
+        <div className="logo" onClick={refreshPage}>
           <RiCloudWindyFill /> windbnb
         </div>
-        <div className="search">
-          <div className="search__text">Helsinki, Finland</div>
+        <div className="search" onClick={() => setOpenSearchBar(true)}>
+          <div className="search__text">{staysLocation}</div>
           <div className="search__guest">Add guests</div>
           <div className="search__icon">
             <MdSearch size={25} />
