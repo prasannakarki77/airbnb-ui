@@ -7,7 +7,7 @@ import SearchBar from "../searchBar/SearchBar";
 import StaysContext from "../contexts/StaysContext";
 const Header = () => {
   const [openSearchBar, setOpenSearchBar] = useState(false);
-  const { staysLocation } = useContext(StaysContext);
+  const { staysLocation, guests } = useContext(StaysContext);
   function refreshPage() {
     window.location.reload(false);
   }
@@ -20,7 +20,9 @@ const Header = () => {
         </div>
         <div className="search" onClick={() => setOpenSearchBar(true)}>
           <div className="search__text">{staysLocation}</div>
-          <div className="search__guest">Add guests</div>
+          <div className="search__guest">
+            {guests > 0 ? `${guests} Guests` : "Add guests"}
+          </div>
           <div className="search__icon">
             <MdSearch size={25} />
           </div>

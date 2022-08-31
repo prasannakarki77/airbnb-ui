@@ -26,7 +26,7 @@
 
   margin: 30px 0;
   flex-wrap: wrap;
-  @include breakpoint(550px) {
+  @include breakpoint(750px) {
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -41,9 +41,9 @@
   border-radius: 24px;
   overflow: hidden;
   @include breakpoint(850px) {
-    width: 250px;
+    width: 350px;
   }
-  @include breakpoint(550px) {
+  @include breakpoint(750px) {
     width: 100%;
   }
 
@@ -57,7 +57,7 @@
     height: 269px;
 
     @include breakpoint(850px) {
-      height: 150px;
+      height: 239px;
     }
     @include breakpoint(550px) {
       height: 269px;
@@ -68,8 +68,19 @@
     margin: 15px 10px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     font-size: 14px;
     font-weight: 500;
+    &--super {
+      font-family: "Montserrat";
+      color: #4f4f4f;
+      border: 1px solid #4f4f4f;
+      border-radius: 12px;
+      padding: 6px 8px;
+      text-transform: uppercase;
+      font-size: 12px;
+      font-weight: 700;
+    }
     &--type {
       color: #828282;
     }

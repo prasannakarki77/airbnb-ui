@@ -4,7 +4,7 @@ import "./stays.scss";
 import StaysContext from "../contexts/StaysContext";
 import { useContext } from "react";
 const Stays = () => {
-  const { staysList, staysLocation } = useContext(StaysContext);
+  const { staysList } = useContext(StaysContext);
   const [staysCount, setStaysCount] = useState(staysList.length);
   useEffect(() => {
     setStaysCount(staysList.length);
@@ -21,6 +21,9 @@ const Stays = () => {
             <div className="stay">
               <img src={image} alt="stay_image" className="stay__image" />
               <div className="stay__details">
+                {superHost && (
+                  <p className="stay__details--super">Super Host</p>
+                )}
                 <p className="stay__details--type">{type}</p>{" "}
                 <p className="stay__details--ratings">
                   <AiFillStar /> {ratings}

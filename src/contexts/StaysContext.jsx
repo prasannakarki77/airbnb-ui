@@ -61,10 +61,13 @@ const stays = [
 
 export const StaysProvider = ({ children }) => {
   const [staysList, setStaysList] = useState(stays);
-  const [filteredList, setFilteredList] = useState([]);
   const [staysLocation, setStayLocation] = useState("Helsinki, Finland");
-  const [staysCount, setStaysCount] = useState(0);
-  const filterStays = (address, guests) => {
+  const [guests, setGuests] = useState(0);
+  const filterStays = (address, guestCount) => {
+    if (address === "") {
+      setStaysList(stays);
+      return;
+    }
     const filteredList = stays.filter((stay) =>
       stay.location.includes(address)
     );
@@ -73,13 +76,15 @@ export const StaysProvider = ({ children }) => {
     if (address.length) {
       setStayLocation(address);
     }
+    if (guestCount >= 0) {
+      setGuests(guestCount);
+    }
   };
   const value = {
     staysList,
     filterStays,
-    filteredList,
-    staysCount,
     staysLocation,
+    guests,
   };
   return (
     <StaysContext.Provider value={value}>{children}</StaysContext.Provider>

@@ -30,15 +30,21 @@ const SearchBar = ({ visible, onClose }) => {
     return count;
   };
   const decrement = (currentCount) => {
-    if (currentCount === 0) {
-      return currentCount;
-    }
     let count = currentCount - 1;
     let total = totalGuests - 1;
+    if (currentCount <= 0) {
+      return currentCount;
+    }
     setTotalGuests(total);
+
     return count;
   };
   const searchStays = () => {
+    if (adultCount <= 0 && childrenCount <= 0) {
+      setTotalGuests(0);
+      console.log(`total ${totalGuests}`);
+    }
+
     filterStays(locationValue, totalGuests);
   };
 
