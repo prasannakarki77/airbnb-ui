@@ -1,0 +1,10 @@
+@import "./index.scss";
+.container {
+  padding: 30px 90px;
+  @include breakpoint(990px) {
+    padding: 20px;
+  }
+  @include breakpoint(550px) {
+    padding: 20px 5px;
+  }
+}

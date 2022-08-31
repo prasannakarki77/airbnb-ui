@@ -70,7 +70,9 @@ export const StaysProvider = ({ children }) => {
     );
 
     setStaysList(filteredList);
-    setStayLocation(address);
+    if (address.length) {
+      setStayLocation(address);
+    }
   };
   const value = {
     staysList,

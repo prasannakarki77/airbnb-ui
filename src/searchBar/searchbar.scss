@@ -1,3 +1,4 @@
+@import "../index.scss";
 .container {
   position: relative;
 }
@@ -23,22 +24,169 @@
 }
 
 .search-bar {
+  font-family: "Mulish";
   width: 100vw;
+  padding: 90px;
+  @include breakpoint(750px) {
+    padding: 60px 40px;
+  }
+  @include breakpoint(500px) {
+    padding: 30px 20px;
+  }
   background-color: rgb(255, 255, 255);
   transition: all 0.3;
-  animation-name: fromTop;
-  animation-duration: 0.3s;
+}
+.search-fields-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.1);
+  @include breakpoint(650px) {
+    display: block;
+  }
 }
 
-@keyframes fromTop {
-  0% {
-    height: 0px;
-    overflow: hidden;
+.search-option {
+  border: 1px solid #f2f2f2;
+  transition: all 0.3s;
+  cursor: pointer;
+  &:hover {
+    border-color: #eb5757;
   }
-  50% {
-    height: 20px;
+}
+.button-field {
+  display: flex;
+  justify-content: center;
+  cursor: auto;
+  &:hover {
+    border-color: #f2f2f2;
   }
-  100% {
-    height: auto;
+}
+.search-field {
+  padding: 10px 27px;
+
+  &__label {
+    font-weight: 800;
+    font-size: 9px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  &__input {
+    outline: none;
+    font-weight: 400;
+    font-size: 14px;
+    width: 100%;
+    pointer-events: none;
+    border: none;
+  }
+  &__input::placeholder {
+    color: #bdbdbd;
+  }
+  &__button {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 700;
+    color: #f2f2f2;
+    background-color: #eb5757;
+    padding: 15px 25px;
+    @include breakpoint(500px) {
+      padding: 10px 20px;
+    }
+    border: none;
+    border-radius: 8px;
+    transition: all 0.1s ease-out;
+    cursor: pointer;
+    &:hover {
+      background-color: #ca4343;
+      box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
+      transform: translateY(-1px);
+    }
+    svg {
+      font-size: 25px;
+      margin-right: 10px;
+    }
+  }
+}
+
+.search-reference-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin-top: 40px;
+  @include breakpoint(650px) {
+    display: block;
+  }
+}
+
+.reference {
+  padding: 10px 27px;
+  visibility: hidden;
+  @include breakpoint(650px) {
+    display: none;
+  }
+  &--open {
+    visibility: visible;
+    @include breakpoint(650px) {
+      display: block;
+    }
+  }
+  &__location {
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    &:not(:last-child) {
+      margin-bottom: 30px;
+    }
+
+    svg {
+      font-size: 20px;
+      margin-right: 10px;
+    }
+  }
+  &__guests {
+    font-size: 14px;
+    font-weight: 700;
+
+    &--type {
+    }
+    &--age {
+      color: rgba(189, 189, 189, 1);
+      font-weight: 400;
+      margin-bottom: 12px;
+    }
+    &--number {
+      display: flex;
+      align-items: center;
+      svg {
+        font-size: 20px;
+        color: rgba(130, 130, 130, 1);
+        cursor: pointer;
+      }
+    }
+  }
+  &__adults {
+    margin-bottom: 50px;
+  }
+}
+
+.guest-count {
+  margin: 0 10px;
+}
+
+.search-toggle-div {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  display: none;
+  @include breakpoint(650px) {
+    display: flex;
+  }
+  p {
+    font-weight: 700;
+    font-size: 12px;
+    margin-top: 20px;
+  }
+  svg {
+    cursor: pointer;
   }
 }

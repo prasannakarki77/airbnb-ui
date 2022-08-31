@@ -1,7 +1,11 @@
+@import "../index.scss";
 .header-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  @include breakpoint(500px) {
+    display: block;
+  }
 }
 
 .logo {
@@ -11,6 +15,8 @@
   font-size: 14px;
   display: flex;
   align-items: center;
+  cursor: pointer;
+
   svg {
     font-size: 28px;
     margin-right: 6px;
@@ -27,6 +33,11 @@
   border-radius: 16px;
   cursor: pointer;
   transition: all 0.3s;
+  @include breakpoint(500px) {
+    max-width: 350px;
+    margin: 30px auto;
+  }
+
   &:hover {
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   }

@@ -1,8 +1,13 @@
+@import "../index.scss";
+
 .stays-container {
   margin-top: 60px;
   &__heading {
     font-size: 24px;
     font-weight: 700;
+    @include breakpoint(850px) {
+      font-size: 18px;
+    }
   }
   &__count {
     font-size: 14px;
@@ -18,9 +23,14 @@
 .stays {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+
   margin: 30px 0;
   flex-wrap: wrap;
+  @include breakpoint(550px) {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
 .stay {
@@ -30,6 +40,12 @@
   margin: 20px 0;
   border-radius: 24px;
   overflow: hidden;
+  @include breakpoint(850px) {
+    width: 250px;
+  }
+  @include breakpoint(550px) {
+    width: 100%;
+  }
 
   cursor: pointer;
   &:hover {
@@ -39,6 +55,13 @@
   &__image {
     width: 100%;
     height: 269px;
+
+    @include breakpoint(850px) {
+      height: 150px;
+    }
+    @include breakpoint(550px) {
+      height: 269px;
+    }
     object-fit: cover;
   }
   &__details {

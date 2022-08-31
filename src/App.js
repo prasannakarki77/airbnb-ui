@@ -1,4 +1,4 @@
-import "./App.css";
+import "./App.scss";
 import Header from "./header/Header";
 import Stays from "./stays/Stays";
 import { StaysProvider } from "./contexts/StaysContext";

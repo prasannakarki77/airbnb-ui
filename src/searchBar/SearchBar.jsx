@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { MdSearch } from "react-icons/md";
 import { FaMapMarkerAlt } from "react-icons/fa";
+import { IoMdClose } from "react-icons/io";
 import { AiOutlineMinusCircle, AiOutlinePlusCircle } from "react-icons/ai";
 import "./searchbar.scss";
 import StaysContext from "../contexts/StaysContext";
@@ -49,6 +50,10 @@ const SearchBar = ({ visible, onClose }) => {
   return (
     <div id="backdrop-area" onClick={handleClose}>
       <div className="search-bar">
+        <div className="search-toggle-div">
+          <p>Edit your search</p>
+          <IoMdClose size={25} onClick={onClose} />
+        </div>
         <div className="search-fields-container">
           <div className="location search-option" onClick={handleLocationOpen}>
             <div className="search-field">
