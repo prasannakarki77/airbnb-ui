@@ -8,11 +8,11 @@
 
 <div align="center">
   <h3>
-    <a href="https://inspiring-ptolemy-998ade.netlify.app" target="_blank">
+    <a href="https://prismatic-malasada-1d0977.netlify.app" target="_blank">
       Demo
     </a>
     <span> | </span>
-    <a href="https://devchallenges.io/solutions/V0udOxfSucCy73RoniDV" target="_blank">
+    <a href="https://devchallenges.io/solutions/0hNVmxga65lvmbc1vubp" target="_blank">
       Solution
     </a>
     <span> | </span>
